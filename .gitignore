@@ -1,7 +1,5 @@
 # Node dependencies
 **/node_modules
-# pnpm lockfile
-pnpm-lock.yaml
 
 # Build outputs
 **/dist
