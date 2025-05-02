@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Game {
+  id        Int      @id @default(autoincrement())
+  start_time DateTime @default(now())
+  end_time   DateTime?
+  player_name String 
+  found_characters FoundCharacter[]
+  status     String @default("pending")
+
+  @@map("games")
+}
+
+model Character {
+  id        Int      @id @default(autoincrement())
+  name      String
+  min_x     Int
+  max_x     Int
+  min_y     Int
+  max_y     Int
+  found_instances FoundCharacter[]
+
+  @@map("characters")
+}
+
+model FoundCharacter {
+  id        Int      @id @default(autoincrement())
+  character_id Int
+  character   Character @relation(fields: [character_id], references: [id])
+  game_id     Int
+  game        Game      @relation(fields: [game_id], references: [id])
+  
+
+  @@map("found_characters")
+}
