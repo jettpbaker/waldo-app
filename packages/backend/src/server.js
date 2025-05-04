@@ -1,7 +1,6 @@
 import express from 'express'
 import cors from 'cors'
-
-console.log(process.env.FRONTEND_URL)
+import apiRouter from './routes/api.js'
 
 const app = express()
 
@@ -10,15 +9,6 @@ const corsOptions = {
   credentials: true,
 }
 
-app.use(cors(corsOptions))
-
-app.use((req, res, next) => {
-  console.log(req.method, req.url)
-  next()
-})
-
-app.get('/api/ping', (req, res) => {
-  res.json({ message: 'pong' })
-})
+app.use('/api', apiRouter)
 
 app.listen(3000, () => console.log(`Backend listening on port 3000`))
