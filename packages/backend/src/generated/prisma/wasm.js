@@ -125,7 +125,7 @@ exports.Prisma.GameScalarFieldEnum = {
   start_time: 'start_time',
   end_time: 'end_time',
   player_name: 'player_name',
-  status: 'status'
+  completed: 'completed'
 };
 
 exports.Prisma.CharacterScalarFieldEnum = {
