@@ -18,9 +18,9 @@ model Game {
   id        Int      @id @default(autoincrement())
   start_time DateTime @default(now())
   end_time   DateTime?
-  player_name String 
+  player_name String ?
   found_characters FoundCharacter[]
-  status     String @default("pending")
+  completed     Boolean @default(false)
 
   @@map("games")
 }
@@ -44,6 +44,6 @@ model FoundCharacter {
   game_id     Int
   game        Game      @relation(fields: [game_id], references: [id])
   
-
+  @@unique([game_id, character_id])
   @@map("found_characters")
 }
