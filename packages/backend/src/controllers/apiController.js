@@ -1,5 +1,5 @@
-import DB from '../db/db'
-import findCharacterAt from '../utils/findCharacterAt'
+import DB from '../db/db.js'
+import findCharacterAt from '../utils/findCharacterAt.js'
 
 const apiController = {
   getGames: async (req, res, next) => {
