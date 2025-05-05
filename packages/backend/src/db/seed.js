@@ -1,7 +1,9 @@
 import prisma from '../../prisma/client.js'
 
-const seedDB = async () => {
-  console.log('Seeding database 🌱')
+const seedDB = async (log = false) => {
+  if (log) {
+    console.log('Seeding database 🌱')
+  }
 
   const characters = [
     {
@@ -44,7 +46,9 @@ const seedDB = async () => {
       })),
     })
 
-    console.log('Database seeded successfully 🌲', seed)
+    if (log) {
+      console.log('Database seeded successfully 🌲')
+    }
   } catch (error) {
     console.error('Error seeding database:', error)
     return

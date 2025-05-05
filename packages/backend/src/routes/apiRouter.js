@@ -1,23 +1,14 @@
 import express from 'express'
+import apiController from '../controllers/apiController'
 
 const apiRouter = express.Router()
 
-apiRouter.get('/games', (req, res) => {
-  res.json({ message: 'games' })
-})
-apiRouter.get('/characters', (req, res) => {
-  res.json({ message: 'characters' })
-})
-apiRouter.get('/check', (req, res) => {
-  res.json({ message: 'check' })
-})
+apiRouter.get('/games', apiController.getGames)
+apiRouter.get('/characters', apiController.getCharacters)
 
-apiRouter.post('/start_game', (req, res) => {
-  res.json({ message: 'start_game' })
-})
-apiRouter.patch('/end_game/:id', (req, res) => {
-  res.json({ message: 'end_game' })
-})
+apiRouter.post('/start_game', apiController.startGame)
+apiRouter.patch('/end_game/:id', apiController.endGame)
+apiRouter.post('/check', apiController.check)
 
 apiRouter.get('/ping', (req, res) => {
   res.json({ message: 'pong' })

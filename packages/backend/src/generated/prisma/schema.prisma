@@ -16,8 +16,9 @@ datasource db {
 
 model Game {
   id               Int              @id @default(autoincrement())
-  start_time       DateTime         @default(now())
+  start_time       DateTime?
   end_time         DateTime?
+  duration         Int?
   player_name      String?
   found_characters FoundCharacter[]
   completed        Boolean          @default(false)

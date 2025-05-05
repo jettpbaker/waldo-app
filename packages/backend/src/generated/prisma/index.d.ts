@@ -1126,16 +1126,19 @@ export namespace Prisma {
 
   export type GameAvgAggregateOutputType = {
     id: number | null
+    duration: number | null
   }
 
   export type GameSumAggregateOutputType = {
     id: number | null
+    duration: number | null
   }
 
   export type GameMinAggregateOutputType = {
     id: number | null
     start_time: Date | null
     end_time: Date | null
+    duration: number | null
     player_name: string | null
     completed: boolean | null
   }
@@ -1144,6 +1147,7 @@ export namespace Prisma {
     id: number | null
     start_time: Date | null
     end_time: Date | null
+    duration: number | null
     player_name: string | null
     completed: boolean | null
   }
@@ -1152,6 +1156,7 @@ export namespace Prisma {
     id: number
     start_time: number
     end_time: number
+    duration: number
     player_name: number
     completed: number
     _all: number
@@ -1160,16 +1165,19 @@ export namespace Prisma {
 
   export type GameAvgAggregateInputType = {
     id?: true
+    duration?: true
   }
 
   export type GameSumAggregateInputType = {
     id?: true
+    duration?: true
   }
 
   export type GameMinAggregateInputType = {
     id?: true
     start_time?: true
     end_time?: true
+    duration?: true
     player_name?: true
     completed?: true
   }
@@ -1178,6 +1186,7 @@ export namespace Prisma {
     id?: true
     start_time?: true
     end_time?: true
+    duration?: true
     player_name?: true
     completed?: true
   }
@@ -1186,6 +1195,7 @@ export namespace Prisma {
     id?: true
     start_time?: true
     end_time?: true
+    duration?: true
     player_name?: true
     completed?: true
     _all?: true
@@ -1279,8 +1289,9 @@ export namespace Prisma {
 
   export type GameGroupByOutputType = {
     id: number
-    start_time: Date
+    start_time: Date | null
     end_time: Date | null
+    duration: number | null
     player_name: string | null
     completed: boolean
     _count: GameCountAggregateOutputType | null
@@ -1308,6 +1319,7 @@ export namespace Prisma {
     id?: boolean
     start_time?: boolean
     end_time?: boolean
+    duration?: boolean
     player_name?: boolean
     completed?: boolean
     found_characters?: boolean | Game$found_charactersArgs<ExtArgs>
@@ -1318,6 +1330,7 @@ export namespace Prisma {
     id?: boolean
     start_time?: boolean
     end_time?: boolean
+    duration?: boolean
     player_name?: boolean
     completed?: boolean
   }, ExtArgs["result"]["game"]>
@@ -1326,6 +1339,7 @@ export namespace Prisma {
     id?: boolean
     start_time?: boolean
     end_time?: boolean
+    duration?: boolean
     player_name?: boolean
     completed?: boolean
   }, ExtArgs["result"]["game"]>
@@ -1334,11 +1348,12 @@ export namespace Prisma {
     id?: boolean
     start_time?: boolean
     end_time?: boolean
+    duration?: boolean
     player_name?: boolean
     completed?: boolean
   }
 
-  export type GameOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "start_time" | "end_time" | "player_name" | "completed", ExtArgs["result"]["game"]>
+  export type GameOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "start_time" | "end_time" | "duration" | "player_name" | "completed", ExtArgs["result"]["game"]>
   export type GameInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     found_characters?: boolean | Game$found_charactersArgs<ExtArgs>
     _count?: boolean | GameCountOutputTypeDefaultArgs<ExtArgs>
@@ -1353,8 +1368,9 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      start_time: Date
+      start_time: Date | null
       end_time: Date | null
+      duration: number | null
       player_name: string | null
       completed: boolean
     }, ExtArgs["result"]["game"]>
@@ -1784,6 +1800,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Game", 'Int'>
     readonly start_time: FieldRef<"Game", 'DateTime'>
     readonly end_time: FieldRef<"Game", 'DateTime'>
+    readonly duration: FieldRef<"Game", 'Int'>
     readonly player_name: FieldRef<"Game", 'String'>
     readonly completed: FieldRef<"Game", 'Boolean'>
   }
@@ -4449,6 +4466,7 @@ export namespace Prisma {
     id: 'id',
     start_time: 'start_time',
     end_time: 'end_time',
+    duration: 'duration',
     player_name: 'player_name',
     completed: 'completed'
   };
@@ -4577,8 +4595,9 @@ export namespace Prisma {
     OR?: GameWhereInput[]
     NOT?: GameWhereInput | GameWhereInput[]
     id?: IntFilter<"Game"> | number
-    start_time?: DateTimeFilter<"Game"> | Date | string
+    start_time?: DateTimeNullableFilter<"Game"> | Date | string | null
     end_time?: DateTimeNullableFilter<"Game"> | Date | string | null
+    duration?: IntNullableFilter<"Game"> | number | null
     player_name?: StringNullableFilter<"Game"> | string | null
     completed?: BoolFilter<"Game"> | boolean
     found_characters?: FoundCharacterListRelationFilter
@@ -4586,8 +4605,9 @@ export namespace Prisma {
 
   export type GameOrderByWithRelationInput = {
     id?: SortOrder
-    start_time?: SortOrder
+    start_time?: SortOrderInput | SortOrder
     end_time?: SortOrderInput | SortOrder
+    duration?: SortOrderInput | SortOrder
     player_name?: SortOrderInput | SortOrder
     completed?: SortOrder
     found_characters?: FoundCharacterOrderByRelationAggregateInput
@@ -4598,8 +4618,9 @@ export namespace Prisma {
     AND?: GameWhereInput | GameWhereInput[]
     OR?: GameWhereInput[]
     NOT?: GameWhereInput | GameWhereInput[]
-    start_time?: DateTimeFilter<"Game"> | Date | string
+    start_time?: DateTimeNullableFilter<"Game"> | Date | string | null
     end_time?: DateTimeNullableFilter<"Game"> | Date | string | null
+    duration?: IntNullableFilter<"Game"> | number | null
     player_name?: StringNullableFilter<"Game"> | string | null
     completed?: BoolFilter<"Game"> | boolean
     found_characters?: FoundCharacterListRelationFilter
@@ -4607,8 +4628,9 @@ export namespace Prisma {
 
   export type GameOrderByWithAggregationInput = {
     id?: SortOrder
-    start_time?: SortOrder
+    start_time?: SortOrderInput | SortOrder
     end_time?: SortOrderInput | SortOrder
+    duration?: SortOrderInput | SortOrder
     player_name?: SortOrderInput | SortOrder
     completed?: SortOrder
     _count?: GameCountOrderByAggregateInput
@@ -4623,8 +4645,9 @@ export namespace Prisma {
     OR?: GameScalarWhereWithAggregatesInput[]
     NOT?: GameScalarWhereWithAggregatesInput | GameScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Game"> | number
-    start_time?: DateTimeWithAggregatesFilter<"Game"> | Date | string
+    start_time?: DateTimeNullableWithAggregatesFilter<"Game"> | Date | string | null
     end_time?: DateTimeNullableWithAggregatesFilter<"Game"> | Date | string | null
+    duration?: IntNullableWithAggregatesFilter<"Game"> | number | null
     player_name?: StringNullableWithAggregatesFilter<"Game"> | string | null
     completed?: BoolWithAggregatesFilter<"Game"> | boolean
   }
@@ -4743,8 +4766,9 @@ export namespace Prisma {
   }
 
   export type GameCreateInput = {
-    start_time?: Date | string
+    start_time?: Date | string | null
     end_time?: Date | string | null
+    duration?: number | null
     player_name?: string | null
     completed?: boolean
     found_characters?: FoundCharacterCreateNestedManyWithoutGameInput
@@ -4752,16 +4776,18 @@ export namespace Prisma {
 
   export type GameUncheckedCreateInput = {
     id?: number
-    start_time?: Date | string
+    start_time?: Date | string | null
     end_time?: Date | string | null
+    duration?: number | null
     player_name?: string | null
     completed?: boolean
     found_characters?: FoundCharacterUncheckedCreateNestedManyWithoutGameInput
   }
 
   export type GameUpdateInput = {
-    start_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     end_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
     player_name?: NullableStringFieldUpdateOperationsInput | string | null
     completed?: BoolFieldUpdateOperationsInput | boolean
     found_characters?: FoundCharacterUpdateManyWithoutGameNestedInput
@@ -4769,8 +4795,9 @@ export namespace Prisma {
 
   export type GameUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    start_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     end_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
     player_name?: NullableStringFieldUpdateOperationsInput | string | null
     completed?: BoolFieldUpdateOperationsInput | boolean
     found_characters?: FoundCharacterUncheckedUpdateManyWithoutGameNestedInput
@@ -4778,23 +4805,26 @@ export namespace Prisma {
 
   export type GameCreateManyInput = {
     id?: number
-    start_time?: Date | string
+    start_time?: Date | string | null
     end_time?: Date | string | null
+    duration?: number | null
     player_name?: string | null
     completed?: boolean
   }
 
   export type GameUpdateManyMutationInput = {
-    start_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     end_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
     player_name?: NullableStringFieldUpdateOperationsInput | string | null
     completed?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type GameUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    start_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     end_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
     player_name?: NullableStringFieldUpdateOperationsInput | string | null
     completed?: BoolFieldUpdateOperationsInput | boolean
   }
@@ -4912,17 +4942,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
   export type DateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -4932,6 +4951,17 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type StringNullableFilter<$PrismaModel = never> = {
@@ -4973,18 +5003,21 @@ export namespace Prisma {
     id?: SortOrder
     start_time?: SortOrder
     end_time?: SortOrder
+    duration?: SortOrder
     player_name?: SortOrder
     completed?: SortOrder
   }
 
   export type GameAvgOrderByAggregateInput = {
     id?: SortOrder
+    duration?: SortOrder
   }
 
   export type GameMaxOrderByAggregateInput = {
     id?: SortOrder
     start_time?: SortOrder
     end_time?: SortOrder
+    duration?: SortOrder
     player_name?: SortOrder
     completed?: SortOrder
   }
@@ -4993,12 +5026,14 @@ export namespace Prisma {
     id?: SortOrder
     start_time?: SortOrder
     end_time?: SortOrder
+    duration?: SortOrder
     player_name?: SortOrder
     completed?: SortOrder
   }
 
   export type GameSumOrderByAggregateInput = {
     id?: SortOrder
+    duration?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -5017,20 +5052,6 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -5043,6 +5064,22 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -5233,12 +5270,16 @@ export namespace Prisma {
     connect?: FoundCharacterWhereUniqueInput | FoundCharacterWhereUniqueInput[]
   }
 
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
-  }
-
   export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
@@ -5378,17 +5419,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -5398,6 +5428,17 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedStringNullableFilter<$PrismaModel = never> = {
@@ -5446,20 +5487,6 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -5474,7 +5501,7 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -5482,7 +5509,23 @@ export namespace Prisma {
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -5659,16 +5702,18 @@ export namespace Prisma {
   }
 
   export type GameCreateWithoutFound_charactersInput = {
-    start_time?: Date | string
+    start_time?: Date | string | null
     end_time?: Date | string | null
+    duration?: number | null
     player_name?: string | null
     completed?: boolean
   }
 
   export type GameUncheckedCreateWithoutFound_charactersInput = {
     id?: number
-    start_time?: Date | string
+    start_time?: Date | string | null
     end_time?: Date | string | null
+    duration?: number | null
     player_name?: string | null
     completed?: boolean
   }
@@ -5718,16 +5763,18 @@ export namespace Prisma {
   }
 
   export type GameUpdateWithoutFound_charactersInput = {
-    start_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     end_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
     player_name?: NullableStringFieldUpdateOperationsInput | string | null
     completed?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type GameUncheckedUpdateWithoutFound_charactersInput = {
     id?: IntFieldUpdateOperationsInput | number
-    start_time?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     end_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
     player_name?: NullableStringFieldUpdateOperationsInput | string | null
     completed?: BoolFieldUpdateOperationsInput | boolean
   }
