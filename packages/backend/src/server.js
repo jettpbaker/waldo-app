@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import apiRouter from './routes/apiRouter.js'
+import DB from './db/db.js'
 
 const app = express()
 
@@ -13,6 +14,8 @@ app.use(cors(corsOptions))
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+
+DB.helpers.seedDB()
 
 app.use('/api', apiRouter)
 

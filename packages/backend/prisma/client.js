@@ -1,4 +1,4 @@
-import { PrismaClient } from '../src/generated/prisma'
+import { PrismaClient } from '../src/generated/prisma/index.js'
 
 const getDatabaseUrl = () => {
   if (process.env.NODE_ENV === 'test') {

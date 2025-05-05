@@ -27,11 +27,11 @@ model Game {
 
 model Character {
   id              Int              @id @default(autoincrement())
-  name            String
-  min_x           Int
-  max_x           Int
-  min_y           Int
-  max_y           Int
+  name            String           @unique
+  min_x           Float
+  max_x           Float
+  min_y           Float
+  max_y           Float
   found_instances FoundCharacter[]
 
   @@map("characters")
