@@ -1,4 +1,6 @@
-import prisma from './client.js'
+import prisma from '../../prisma/client.js'
+import seedDB from './seed.js'
+import resetDB from './reset.js'
 
 const DB = {
   queries: {
@@ -43,6 +45,11 @@ const DB = {
         },
       })
     },
+  },
+
+  helpers: {
+    seedDB,
+    resetDB,
   },
 }
 

@@ -2915,10 +2915,10 @@ export namespace Prisma {
   interface CharacterFieldRefs {
     readonly id: FieldRef<"Character", 'Int'>
     readonly name: FieldRef<"Character", 'String'>
-    readonly min_x: FieldRef<"Character", 'Int'>
-    readonly max_x: FieldRef<"Character", 'Int'>
-    readonly min_y: FieldRef<"Character", 'Int'>
-    readonly max_y: FieldRef<"Character", 'Int'>
+    readonly min_x: FieldRef<"Character", 'Float'>
+    readonly max_x: FieldRef<"Character", 'Float'>
+    readonly min_y: FieldRef<"Character", 'Float'>
+    readonly max_y: FieldRef<"Character", 'Float'>
   }
     
 
@@ -4635,10 +4635,10 @@ export namespace Prisma {
     NOT?: CharacterWhereInput | CharacterWhereInput[]
     id?: IntFilter<"Character"> | number
     name?: StringFilter<"Character"> | string
-    min_x?: IntFilter<"Character"> | number
-    max_x?: IntFilter<"Character"> | number
-    min_y?: IntFilter<"Character"> | number
-    max_y?: IntFilter<"Character"> | number
+    min_x?: FloatFilter<"Character"> | number
+    max_x?: FloatFilter<"Character"> | number
+    min_y?: FloatFilter<"Character"> | number
+    max_y?: FloatFilter<"Character"> | number
     found_instances?: FoundCharacterListRelationFilter
   }
 
@@ -4654,16 +4654,16 @@ export namespace Prisma {
 
   export type CharacterWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    name?: string
     AND?: CharacterWhereInput | CharacterWhereInput[]
     OR?: CharacterWhereInput[]
     NOT?: CharacterWhereInput | CharacterWhereInput[]
-    name?: StringFilter<"Character"> | string
-    min_x?: IntFilter<"Character"> | number
-    max_x?: IntFilter<"Character"> | number
-    min_y?: IntFilter<"Character"> | number
-    max_y?: IntFilter<"Character"> | number
+    min_x?: FloatFilter<"Character"> | number
+    max_x?: FloatFilter<"Character"> | number
+    min_y?: FloatFilter<"Character"> | number
+    max_y?: FloatFilter<"Character"> | number
     found_instances?: FoundCharacterListRelationFilter
-  }, "id">
+  }, "id" | "name">
 
   export type CharacterOrderByWithAggregationInput = {
     id?: SortOrder
@@ -4685,10 +4685,10 @@ export namespace Prisma {
     NOT?: CharacterScalarWhereWithAggregatesInput | CharacterScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Character"> | number
     name?: StringWithAggregatesFilter<"Character"> | string
-    min_x?: IntWithAggregatesFilter<"Character"> | number
-    max_x?: IntWithAggregatesFilter<"Character"> | number
-    min_y?: IntWithAggregatesFilter<"Character"> | number
-    max_y?: IntWithAggregatesFilter<"Character"> | number
+    min_x?: FloatWithAggregatesFilter<"Character"> | number
+    max_x?: FloatWithAggregatesFilter<"Character"> | number
+    min_y?: FloatWithAggregatesFilter<"Character"> | number
+    max_y?: FloatWithAggregatesFilter<"Character"> | number
   }
 
   export type FoundCharacterWhereInput = {
@@ -4820,20 +4820,20 @@ export namespace Prisma {
 
   export type CharacterUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
-    min_x?: IntFieldUpdateOperationsInput | number
-    max_x?: IntFieldUpdateOperationsInput | number
-    min_y?: IntFieldUpdateOperationsInput | number
-    max_y?: IntFieldUpdateOperationsInput | number
+    min_x?: FloatFieldUpdateOperationsInput | number
+    max_x?: FloatFieldUpdateOperationsInput | number
+    min_y?: FloatFieldUpdateOperationsInput | number
+    max_y?: FloatFieldUpdateOperationsInput | number
     found_instances?: FoundCharacterUpdateManyWithoutCharacterNestedInput
   }
 
   export type CharacterUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    min_x?: IntFieldUpdateOperationsInput | number
-    max_x?: IntFieldUpdateOperationsInput | number
-    min_y?: IntFieldUpdateOperationsInput | number
-    max_y?: IntFieldUpdateOperationsInput | number
+    min_x?: FloatFieldUpdateOperationsInput | number
+    max_x?: FloatFieldUpdateOperationsInput | number
+    min_y?: FloatFieldUpdateOperationsInput | number
+    max_y?: FloatFieldUpdateOperationsInput | number
     found_instances?: FoundCharacterUncheckedUpdateManyWithoutCharacterNestedInput
   }
 
@@ -4848,19 +4848,19 @@ export namespace Prisma {
 
   export type CharacterUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
-    min_x?: IntFieldUpdateOperationsInput | number
-    max_x?: IntFieldUpdateOperationsInput | number
-    min_y?: IntFieldUpdateOperationsInput | number
-    max_y?: IntFieldUpdateOperationsInput | number
+    min_x?: FloatFieldUpdateOperationsInput | number
+    max_x?: FloatFieldUpdateOperationsInput | number
+    min_y?: FloatFieldUpdateOperationsInput | number
+    max_y?: FloatFieldUpdateOperationsInput | number
   }
 
   export type CharacterUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    min_x?: IntFieldUpdateOperationsInput | number
-    max_x?: IntFieldUpdateOperationsInput | number
-    min_y?: IntFieldUpdateOperationsInput | number
-    max_y?: IntFieldUpdateOperationsInput | number
+    min_x?: FloatFieldUpdateOperationsInput | number
+    max_x?: FloatFieldUpdateOperationsInput | number
+    min_y?: FloatFieldUpdateOperationsInput | number
+    max_y?: FloatFieldUpdateOperationsInput | number
   }
 
   export type FoundCharacterCreateInput = {
@@ -5086,6 +5086,17 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type CharacterCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -5145,6 +5156,22 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type CharacterScalarRelationFilter = {
@@ -5274,6 +5301,14 @@ export namespace Prisma {
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type FoundCharacterUpdateManyWithoutCharacterNestedInput = {
@@ -5506,6 +5541,22 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
   export type FoundCharacterCreateWithoutGameInput = {
     character: CharacterCreateNestedOneWithoutFound_instancesInput
   }
@@ -5640,19 +5691,19 @@ export namespace Prisma {
 
   export type CharacterUpdateWithoutFound_instancesInput = {
     name?: StringFieldUpdateOperationsInput | string
-    min_x?: IntFieldUpdateOperationsInput | number
-    max_x?: IntFieldUpdateOperationsInput | number
-    min_y?: IntFieldUpdateOperationsInput | number
-    max_y?: IntFieldUpdateOperationsInput | number
+    min_x?: FloatFieldUpdateOperationsInput | number
+    max_x?: FloatFieldUpdateOperationsInput | number
+    min_y?: FloatFieldUpdateOperationsInput | number
+    max_y?: FloatFieldUpdateOperationsInput | number
   }
 
   export type CharacterUncheckedUpdateWithoutFound_instancesInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    min_x?: IntFieldUpdateOperationsInput | number
-    max_x?: IntFieldUpdateOperationsInput | number
-    min_y?: IntFieldUpdateOperationsInput | number
-    max_y?: IntFieldUpdateOperationsInput | number
+    min_x?: FloatFieldUpdateOperationsInput | number
+    max_x?: FloatFieldUpdateOperationsInput | number
+    min_y?: FloatFieldUpdateOperationsInput | number
+    max_y?: FloatFieldUpdateOperationsInput | number
   }
 
   export type GameUpsertWithoutFound_charactersInput = {
