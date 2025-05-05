@@ -1,4 +1,4 @@
-import DB from '../db/db'
+import DB from '../db/db.js'
 
 const findCharacterAt = async (x, y) => {
   const characters = await DB.queries.getCharacters()
