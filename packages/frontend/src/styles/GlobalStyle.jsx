@@ -77,15 +77,17 @@ const reset = `
     cursor: pointer;
   }
 `
-const themeStyles = `
-  body {
-    background: ${({ theme }) => theme.colors.bg};
-    color: ${({ theme }) => theme.colors.fg};
-    transition: background-color 0.3s, color 0.3s;
-  }
-`
 
 export const GlobalStyle = createGlobalStyle`
   ${reset}
-  ${themeStyles}
+
+
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+    'Open Sans', 'Helvetica Neue', sans-serif;
+
+    background-color: ${({ theme }) => theme.colors.bg};
+    color: ${({ theme }) => theme.colors.fg};
+
+  }
 `
