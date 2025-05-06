@@ -97,7 +97,7 @@ html {
 
   html::view-transition-new(theme-transition) {
     position: fixed;
-    animation: clipPathScale 750ms ease-in-out both;
+    animation: clipPathScale 850ms ease-in-out both;
     z-index: 1;
   }
   html::view-transition-old(theme-transition) {
@@ -108,10 +108,10 @@ html {
 
   @keyframes clipPathScale {
     0% {
-      clip-path: circle(0% at calc(var(--cx) + 19.33%) var(--cy));
+      clip-path: circle(0% at calc(var(--cx)) var(--cy));
     }
     100% {
-      clip-path: circle(150% at calc(var(--cx) + 19.33%) var(--cy));
+      clip-path: circle(200% at calc(var(--cx)) var(--cy));
     }
   }
 
