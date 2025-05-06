@@ -81,13 +81,40 @@ const reset = `
 export const GlobalStyle = createGlobalStyle`
   ${reset}
 
+html {
+  view-transition-name: theme-transition;
+}
 
   body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-    'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+      Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+      sans-serif;
 
     background-color: ${({ theme }) => theme.colors.bg};
     color: ${({ theme }) => theme.colors.fg};
 
   }
+
+  html::view-transition-new(theme-transition) {
+    position: fixed;
+    animation: clipPathScale 750ms ease-in-out both;
+    z-index: 1;
+  }
+  html::view-transition-old(theme-transition) {
+    position: fixed;
+    clip-path: none;
+    animation: none;
+  }
+
+  @keyframes clipPathScale {
+    0% {
+      clip-path: circle(0% at calc(var(--cx) + 19.33%) var(--cy));
+    }
+    100% {
+      clip-path: circle(150% at calc(var(--cx) + 19.33%) var(--cy));
+    }
+  }
+
+
+}
 `
