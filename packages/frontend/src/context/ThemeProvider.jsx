@@ -1,8 +1,7 @@
-import React, { createContext, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { ThemeProvider as SCProvider } from 'styled-components'
 import { lightTheme, darkTheme } from '../styles/themes'
-
-export const ThemeContext = createContext()
+import { ThemeContext } from './ThemeContext'
 
 export function ThemeProvider({ children }) {
   const [themeName, setThemeName] = useState('light')
