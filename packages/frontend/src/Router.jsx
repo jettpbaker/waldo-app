@@ -5,6 +5,7 @@ import Leaderboard from './pages/Leaderboard.jsx'
 import Game from './pages/Game.jsx'
 import queryClient from './queryClient.js'
 import { getCharacters } from './api/characters.js'
+import { getGames } from './api/games.js'
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
           queryClient.prefetchQuery({
             queryKey: ['characters'],
             queryFn: getCharacters,
+          })
+          queryClient.prefetchQuery({
+            queryKey: ['games'],
+            queryFn: getGames,
           })
 
           return null
