@@ -98,7 +98,7 @@ html {
 
   html::view-transition-new(theme-transition) {
     position: fixed;
-    animation: clipPathScale 1500ms ease-in-out both;
+    animation: clipPathScale 750ms ease-in-out both;
     z-index: 1;
   }
   html::view-transition-old(theme-transition) {
