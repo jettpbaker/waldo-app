@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Trophy, House, Moon, SunMedium } from 'lucide-react'
+import { Trophy, House } from 'lucide-react'
 import { NavLink } from 'react-router'
 import ThemeSwitcher from './ThemeSwitcher.jsx'
 
@@ -22,14 +22,6 @@ const NavBarLink = styled(NavLink)`
   cursor: pointer;
 `
 
-const NavBarButton = styled.button`
-  background: none;
-  border: none;
-  cursor: pointer;
-
-  color: ${({ theme }) => theme.colors.primary};
-`
-
 export default function Navbar() {
   return (
     <NavbarContainer>
@@ -38,7 +30,7 @@ export default function Navbar() {
       </NavBarLink>
       <NavBarGroup>
         <ThemeSwitcher />
-        <NavBarLink to="/">
+        <NavBarLink to="/leaderboard">
           <Trophy />
         </NavBarLink>
       </NavBarGroup>
