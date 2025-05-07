@@ -3,6 +3,7 @@ import Layout from './components/Layout/Layout.jsx'
 import Home from './pages/Home.jsx'
 import Leaderboard from './pages/Leaderboard.jsx'
 import Game from './pages/Game.jsx'
+import api from './api/api.js'
 
 const router = createBrowserRouter([
   {
@@ -10,6 +11,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
+        loader: async () => {
+          api.prefetchCharacters()
+          api.prefetchGames()
+          return null
+        },
         element: <Home />,
       },
       {
