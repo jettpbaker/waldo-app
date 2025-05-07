@@ -50,6 +50,13 @@ export default function ThemeSwitcher() {
       return
     }
 
+    /*
+    This is a practice project so I probably won't come back and do this, but:
+    Once React's <ViewTransition> API
+    (https://react.dev/reference/react/ViewTransition)
+    is production ready, you could use it to animate the theme change.
+    */
+
     document.startViewTransition(async () => toggle())
   }
 
