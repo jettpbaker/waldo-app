@@ -3,9 +3,7 @@ import Layout from './components/Layout/Layout.jsx'
 import Home from './pages/Home.jsx'
 import Leaderboard from './pages/Leaderboard.jsx'
 import Game from './pages/Game.jsx'
-import queryClient from './queryClient.js'
-import { getCharacters } from './api/characters.js'
-import { getGames } from './api/games.js'
+import api from './api/api.js'
 
 const router = createBrowserRouter([
   {
@@ -14,15 +12,8 @@ const router = createBrowserRouter([
       {
         path: '/',
         loader: async () => {
-          queryClient.prefetchQuery({
-            queryKey: ['characters'],
-            queryFn: getCharacters,
-          })
-          queryClient.prefetchQuery({
-            queryKey: ['games'],
-            queryFn: getGames,
-          })
-
+          api.prefetchCharacters()
+          api.prefetchGames()
           return null
         },
         element: <Home />,
