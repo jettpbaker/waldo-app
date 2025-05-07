@@ -21,9 +21,11 @@ app.use(express.urlencoded({ extended: false }))
 DB.helpers.seedDB(true)
 
 // Add artificial delay for development/testing
-app.use('/', (req, res, next) => {
-  setTimeout(next, 1000)
-})
+if (process.env.NODE_ENV === 'development') {
+  app.use('/', (req, res, next) => {
+    setTimeout(next, 1000)
+  })
+}
 
 app.use('/api', apiRouter)
 
