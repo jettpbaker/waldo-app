@@ -25,10 +25,25 @@ export default function ThemeSwitcher() {
     const cx = Math.round(x + width / 2) + 'px'
     const cy = Math.round(y + height / 2) + 'px'
 
-    console.log({ cx, cy })
-
     document.documentElement.style.setProperty('--cx', cx)
     document.documentElement.style.setProperty('--cy', cy)
+
+    // calculate radius to the farthest viewport corner and set CSS var
+    const cxNum = parseFloat(cx)
+    const cyNum = parseFloat(cy)
+    const { innerWidth: vw, innerHeight: vh } = window
+    const distances = [
+      // distance to the top left corner
+      Math.hypot(cxNum, cyNum),
+      // distance to the top right corner
+      Math.hypot(vw - cxNum, cyNum),
+      // distance to the bottom left corner
+      Math.hypot(cxNum, vh - cyNum),
+      // distance to the bottom right corner
+      Math.hypot(vw - cxNum, vh - cyNum),
+    ]
+    const r = Math.ceil(Math.max(...distances)) + 'px'
+    document.documentElement.style.setProperty('--r', r)
 
     if (typeof document.startViewTransition !== 'function') {
       toggle()

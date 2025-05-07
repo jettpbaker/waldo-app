@@ -82,6 +82,7 @@ export const GlobalStyle = createGlobalStyle`
   ${reset}
 
 html {
+  --r: 0px;
   view-transition-name: theme-transition;
 }
 
@@ -97,7 +98,7 @@ html {
 
   html::view-transition-new(theme-transition) {
     position: fixed;
-    animation: clipPathScale 850ms ease-in-out both;
+    animation: clipPathScale 1500ms ease-in-out both;
     z-index: 1;
   }
   html::view-transition-old(theme-transition) {
@@ -108,10 +109,10 @@ html {
 
   @keyframes clipPathScale {
     0% {
-      clip-path: circle(0% at calc(var(--cx)) var(--cy));
+      clip-path: circle(0px at calc(var(--cx)) var(--cy));
     }
     100% {
-      clip-path: circle(200% at calc(var(--cx)) var(--cy));
+      clip-path: circle(var(--r) at calc(var(--cx)) var(--cy));
     }
   }
 
