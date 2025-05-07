@@ -4,28 +4,25 @@ import { lightTheme, darkTheme } from '../styles/themes'
 import { ThemeContext } from './ThemeContext'
 
 export function ThemeProvider({ children }) {
-  const [themeName, setThemeName] = useState('light')
-
-  useEffect(() => {
+  const getTheme = () => {
     const stored = localStorage.getItem('theme')
     if (stored === 'light' || stored === 'dark') {
-      setThemeName(stored)
-    } else {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-      setThemeName(prefersDark ? 'dark' : 'light')
+      return stored
     }
-  }, [])
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  }
+  const [theme, setTheme] = useState(getTheme())
 
   useEffect(() => {
-    localStorage.setItem('theme', themeName)
-  }, [themeName])
+    localStorage.setItem('theme', theme)
+  }, [theme])
 
-  const toggle = () => setThemeName((prev) => (prev === 'light' ? 'dark' : 'light'))
+  const toggle = () => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))
 
-  const themeObject = themeName === 'light' ? lightTheme : darkTheme
+  const themeObject = theme === 'light' ? lightTheme : darkTheme
 
   return (
-    <ThemeContext.Provider value={{ themeName, toggle }}>
+    <ThemeContext.Provider value={{ theme, toggle }}>
       <SCProvider theme={themeObject}>{children}</SCProvider>
     </ThemeContext.Provider>
   )

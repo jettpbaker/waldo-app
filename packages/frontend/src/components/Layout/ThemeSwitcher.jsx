@@ -2,7 +2,8 @@ import styled from 'styled-components'
 import { Moon, SunMedium } from 'lucide-react'
 import useTheme from '../../hooks/useTheme.js'
 import { useRef } from 'react'
-const NavBarButton = styled.button`
+
+const ThemeSwitchButton = styled.button`
   background: none;
   border: none;
   display: inline-flex;
@@ -16,7 +17,7 @@ const NavBarButton = styled.button`
 `
 
 export default function ThemeSwitcher() {
-  const { themeName, toggle } = useTheme()
+  const { theme, toggle } = useTheme()
   const buttonRef = useRef(null)
 
   const handleClick = async () => {
@@ -61,8 +62,8 @@ export default function ThemeSwitcher() {
   }
 
   return (
-    <NavBarButton ref={buttonRef} onClick={handleClick}>
-      {themeName === 'dark' ? <SunMedium /> : <Moon />}
-    </NavBarButton>
+    <ThemeSwitchButton ref={buttonRef} onClick={handleClick}>
+      {theme === 'dark' ? <SunMedium /> : <Moon />}
+    </ThemeSwitchButton>
   )
 }
