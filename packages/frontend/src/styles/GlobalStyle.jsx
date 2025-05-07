@@ -84,6 +84,11 @@ export const GlobalStyle = createGlobalStyle`
 html {
   --r: 0px;
   view-transition-name: theme-transition;
+
+  ::selection {
+    background-color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.primaryFg};
+  }
 }
 
   body {
@@ -98,7 +103,7 @@ html {
 
   html::view-transition-new(theme-transition) {
     position: fixed;
-    animation: clipPathScale 750ms ease-in-out both;
+    animation: clipPathScale 1000ms ease-in-out both;
     z-index: 1;
   }
   html::view-transition-old(theme-transition) {
@@ -116,6 +121,18 @@ html {
     }
   }
 
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-}
+    margin: 5rem;
+  }
+
+  @media (max-width: 768px) {
+    main {
+      margin: 1rem;
+    }
+  }
 `
